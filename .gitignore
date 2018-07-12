@@ -1,0 +1,9 @@
+# Gradle
+build/
+.gradle/
+
+# IDEA
+out/
+.idea/*
+!.idea/google-java-format.xml
+!.idea/codeStyles
