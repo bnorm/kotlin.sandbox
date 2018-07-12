@@ -1,3 +1,12 @@
+@file:Suppress(
+  "UNUSED_PARAMETER",
+  "UNUSED_VARIABLE",
+  "UNREACHABLE_CODE",
+  "ClassName",
+  "FunctionName",
+  "unused"
+)
+
 package testing
 
 
@@ -55,17 +64,17 @@ object Record_v1 : TwitterApi {
 }
 
 fun test_01_v1() {
-  val twetter = Tweeter(Record_v1, "Brian Norman")
+  val tweeter = Tweeter(Record_v1, "Brian Norman")
 
-  twetter.tweet("Hello, Atavium!")
+  tweeter.tweet("Hello, Atavium!")
   assert(Record_v1.tweets.size == 1)
   assert(Record_v1.tweets[0] == "Tweet from Brian Norman: Hello, Atavium!")
 }
 
 fun test_02_v1() {
-  val twetter = Tweeter(Record_v1, "Jim Lester")
+  val tweeter = Tweeter(Record_v1, "Jim Lester")
 
-  twetter.tweet("Hello, Atavium!")
+  tweeter.tweet("Hello, Atavium!")
   assert(Record_v1.tweets.size == 2)
   assert(Record_v1.tweets[1] == "Tweet from Jim Lester: Hello, Atavium!")
 }
@@ -118,18 +127,18 @@ class Record_v2 : TwitterApi {
 
 fun test_01_v2() {
   val recording = Record_v2()
-  val twetter = Tweeter(recording, "Brian Norman")
+  val tweeter = Tweeter(recording, "Brian Norman")
 
-  twetter.tweet("Hello, Atavium!")
+  tweeter.tweet("Hello, Atavium!")
   assert(recording.tweets.size == 1)
   assert(recording.tweets[0] == Tweet_v2("Brian Norman", "Hello, Atavium!"))
 }
 
 fun test_02_v2() {
   val recording = Record_v2()
-  val twetter = Tweeter(recording, "Jim Lester")
+  val tweeter = Tweeter(recording, "Jim Lester")
 
-  twetter.tweet("Hello, Atavium!")
+  tweeter.tweet("Hello, Atavium!")
   assert(recording.tweets.size == 1)
   assert(recording.tweets[0] == Tweet_v2("Jim Lester", "Hello, Atavium!"))
 }

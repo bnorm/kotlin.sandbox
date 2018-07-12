@@ -1,4 +1,11 @@
-@file:Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE", "UNREACHABLE_CODE")
+@file:Suppress(
+  "UNUSED_PARAMETER",
+  "UNUSED_VARIABLE",
+  "UNREACHABLE_CODE",
+  "ClassName",
+  "FunctionName",
+  "unused"
+)
 
 package testing
 
@@ -8,7 +15,6 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 
@@ -52,8 +58,8 @@ class Tweeter_v1 {
 }
 
 fun sample_v1(args: Array<String>) {
-  val twetter = Tweeter_v1()
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = Tweeter_v1()
+  tweeter.tweet("Hello, Atavium!")
 }
 
 
@@ -101,8 +107,8 @@ class Tweeter_v2 {
 }
 
 fun sample_v2(args: Array<String>) {
-  val twetter = Tweeter_v1()
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = Tweeter_v1()
+  tweeter.tweet("Hello, Atavium!")
 }
 
 
@@ -157,8 +163,8 @@ class TwitterApi_v3 {
 }
 
 fun sample_v3(args: Array<String>) {
-  val twetter = Tweeter_v3()
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = Tweeter_v3()
+  tweeter.tweet("Hello, Atavium!")
 }
 
 
@@ -216,8 +222,8 @@ class TwitterApi_v4(
 }
 
 fun sample_v4(args: Array<String>) {
-  val twetter = Tweeter_v4(TwitterApi_v4(OkHttpClient()), "Brian Norman")
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = Tweeter_v4(TwitterApi_v4(OkHttpClient()), "Brian Norman")
+  tweeter.tweet("Hello, Atavium!")
 }
 
 
@@ -284,8 +290,8 @@ class TwitterApi_Mock_v5 @Inject constructor() : TwitterApi_v5 {
 }
 
 fun sample_v5(args: Array<String>) {
-  val twetter = Tweeter_v5(TwitterApi_Mock_v5(), "Brian Norman")
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = Tweeter_v5(TwitterApi_Mock_v5(), "Brian Norman")
+  tweeter.tweet("Hello, Atavium!")
 }
 
 
@@ -386,7 +392,7 @@ fun main(args: Array<String>) {
     .twitterApiComponent(twitterApiComponent)
     .build()
 
-  val twetter = twitterComponent.tweeter()
-  twetter.tweet("Hello, Atavium!")
+  val tweeter = twitterComponent.tweeter()
+  tweeter.tweet("Hello, Atavium!")
 }
 
