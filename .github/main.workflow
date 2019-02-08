@@ -5,5 +5,5 @@ workflow "main" {
 
 action "Build" {
   uses = "docker://openjdk:8"
-  runs = "./gradlew build"
+  runs = "sh gradlew build"
 }
