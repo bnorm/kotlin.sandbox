@@ -4,6 +4,6 @@ workflow "main" {
 }
 
 action "Build" {
-  uses = "library/openjdk@8-jdk-stretch"
+  uses = "docker://openjdk:8"
   runs = "./gradlew build"
 }
