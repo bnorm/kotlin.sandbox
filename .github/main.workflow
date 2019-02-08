@@ -4,6 +4,6 @@ workflow "main" {
 }
 
 action "Build" {
-  uses = "MrRamych/gradle-actions@master"
-  args = "build"
+  uses = "library/openjdk@8-jdk-stretch"
+  runs = "./gradlew build"
 }
