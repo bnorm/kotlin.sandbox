@@ -23,7 +23,6 @@ fun sync(args: Array<String>) = runBlocking<Unit> {
 }
 
 fun async(args: Array<String>) = runBlocking<Unit> {
-  withContext()
   val time = measureTimeMillis {
     coroutineScope {
       val one = async { doSomethingUsefulOne() }
