@@ -10,6 +10,36 @@
 package testing
 
 
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
 class Tweeter(
   private val api: TwitterApi,
   private val user: String
@@ -55,7 +85,7 @@ interface TwitterApi {
 
 
 
-object Record_v1 : TwitterApi {
+class Record_v1 : TwitterApi {
   val tweets = mutableListOf<String>()
 
   override fun postTweet(user: String, tweet: String) {
@@ -64,19 +94,21 @@ object Record_v1 : TwitterApi {
 }
 
 fun test_01_v1() {
-  val tweeter = Tweeter(Record_v1, "Brian Norman")
+  val api = Record_v1()
+  val tweeter = Tweeter(api, "Brian Norman")
 
   tweeter.tweet("Hello, Atavium!")
-  assert(Record_v1.tweets.size == 1)
-  assert(Record_v1.tweets[0] == "Tweet from Brian Norman: Hello, Atavium!")
+  assert(api.tweets.size == 1)
+  assert(api.tweets[0] == "Tweet from Brian Norman: Hello, Atavium!")
 }
 
 fun test_02_v1() {
-  val tweeter = Tweeter(Record_v1, "Jim Lester")
+  val api = Record_v1()
+  val tweeter = Tweeter(api, "Jim Lester")
 
   tweeter.tweet("Hello, Atavium!")
-  assert(Record_v1.tweets.size == 2)
-  assert(Record_v1.tweets[1] == "Tweet from Jim Lester: Hello, Atavium!")
+  assert(api.tweets.size == 1)
+  assert(api.tweets[0] == "Tweet from Jim Lester: Hello, Atavium!")
 }
 
 

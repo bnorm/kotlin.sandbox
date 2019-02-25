@@ -1,20 +1,19 @@
 package intro.coroutines
 
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CompletionStage
-import java.util.function.BiConsumer
-import kotlin.coroutines.experimental.suspendCoroutine
+import kotlin.coroutines.suspendCoroutine
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 suspend fun <T : Any> CompletionStage<T>.await() = suspendCoroutine<T> { continuation ->
-  this.whenComplete(object : BiConsumer<T?, Throwable?> {
-    override fun accept(value: T?, exception: Throwable?) {
-      if (exception == null)
-        continuation.resume(value as T)
-      else
-        continuation.resumeWithException(exception)
-    }
-  })
+  this.whenComplete { value, exception ->
+    if (exception == null)
+      continuation.resume(value as T)
+    else
+      continuation.resumeWithException(exception)
+  }
 }
 
 fun main(args: Array<String>) {

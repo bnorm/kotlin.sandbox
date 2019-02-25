@@ -289,8 +289,16 @@ class TwitterApi_Mock_v5 @Inject constructor() : TwitterApi_v5 {
   }
 }
 
-fun sample_v5(args: Array<String>) {
-  val tweeter = Tweeter_v5(TwitterApi_Mock_v5(), "Brian Norman")
+class WrapTwitterApi_Mock_v5 @Inject constructor(private val api: TwitterApi_v5) : TwitterApi_v5 {
+  override fun postTweet(user: String, tweet: String) {
+    println("DEBUG: ")
+    api.postTweet(user, tweet)
+    println("DEBUG: ")
+  }
+}
+
+fun main(args: Array<String>) {
+  val tweeter = Tweeter_v5(WrapTwitterApi_Mock_v5(TwitterApi_Mock_v5()), "Brian Norman")
   tweeter.tweet("Hello, Atavium!")
 }
 
@@ -383,7 +391,7 @@ class TestTwitterApiModule {
 
 //
 
-fun main(args: Array<String>) {
+fun sample(args: Array<String>) {
   val userModule = UserModule("Brian Norman")
 
   val twitterApiComponent: TwitterApiComponent = DaggerTestTwitterApiComponent.create()
