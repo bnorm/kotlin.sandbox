@@ -4,6 +4,5 @@ workflow "main" {
 }
 
 action "Build" {
-  uses = "docker://openjdk:8"
-  runs = "sh gradlew build"
+  uses = "MrRamych/gradle-actions/openjdk-8@2.1"
 }
